@@ -1,40 +1,32 @@
-# Configuration eth1
-# RAPPEL: eth0 est à vagrant, ne pas y toucher
-
-
-inetutils-inetd:
-  pkg:
-    - installed
-
-
-update-inetd --add "echo stream tcp nowait nobody internal":
-  cmd:
-    - run
-
+# Configuration de l'interface eth1 VM3-6 LAN2-6
 eth1:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    - ipaddr: 172.16.2.163
-    - gateway: 172.16.2.162
-    - netmask: 255.255.255.240
-    - dns:
-      - 139.124.5.132
-      - 139.124.5.131
+    - ipaddr: 192.168.2.3 # nécessaire mais bidon
+    - enable_ipv6: True
+    - ipv6proto: static 
+    - ipv6addr: fc00:1234:2::36
+    - netmask: 64
 
+# Configuration de l'interface eth2 VM3-6 LAN4
 eth2:
   network.managed:
     - enabled: True
     - type: eth
     - proto: none
-    - ipaddr: 172.16.2.183
-    - gateway: 172.16.2.186
+    - ipaddr: 172.16.2.186
     - netmask: 255.255.255.240
-    - dns:
-      - 139.124.5.132
-      - 139.124.5.131
 
-ip route add 172.16.2.128/28 via 172.16.2.162:
-  cmd:
-    - run
+# Activater ipv4 forwarding
+net.ipv4.ip_forward:
+  sysctl:
+    - present
+    - value: 1
+
+# Activer ipv6 forwarding
+net.ipv6.conf.all.forwarding:
+  sysctl:
+    - present
+    - value: 1

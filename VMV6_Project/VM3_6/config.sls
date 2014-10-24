@@ -1,3 +1,15 @@
+inetutils-inetd:
+  pkg:
+    - installed
+
+update-inetd --add "echo stream tcp6 nowait nobody internal":
+  cmd:
+    - run
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
 # Configuration de l'interface eth1 VM3-6 LAN2-6
 eth1:
   network.managed:
@@ -5,10 +17,12 @@ eth1:
     - type: eth
     - proto: none
     - ipaddr: 192.168.2.3 # nécessaire mais bidon
+    - netmask: 255.255.255.0
     - enable_ipv6: True
     - ipv6proto: static 
     - ipv6addr: fc00:1234:2::36
     - netmask: 64
+    - ipv6gateway: fc00:1234:2::26
 
 # Configuration de l'interface eth2 VM3-6 LAN4
 eth2:
@@ -18,15 +32,16 @@ eth2:
     - proto: none
     - ipaddr: 172.16.2.186
     - netmask: 255.255.255.240
+    - gateway: 172.16.2.183
 
-# Activater ipv4 forwarding
-net.ipv4.ip_forward:
-  sysctl:
-    - present
-    - value: 1
+ip route add 172.16.2.128/28 via 172.16.2.183:
+  cmd:
+    - run
 
-# Activer ipv6 forwarding
-net.ipv6.conf.all.forwarding:
-  sysctl:
-    - present
-    - value: 1
+ip route add 172.16.2.144/28 via 172.16.2.183:
+  cmd:
+    - run
+
+ip route add 172.16.2.160/28 via 172.16.2.183:
+  cmd:
+    - run

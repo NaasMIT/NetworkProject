@@ -1,3 +1,7 @@
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
 # Configuration de l'interface eth1 VM1-6 LAN3
 eth1:
   network.managed:
@@ -14,19 +18,21 @@ eth2:
     - type: eth
     - proto: none
     - ipaddr: 192.168.2.3 # nécessaire mais bidon
+    - netmask: 255.255.255.0               
     - enable_ipv6: True
-    - ipv6proto: static 
+    - ipv6proto: static
     - ipv6addr: fc00:1234:1::16
     - netmask: 64
+    - ipv6gateway: fc00:1234:1::26
 
-# Activater ipv4 forwarding
-net.ipv4.ip_forward:
-  sysctl:
-    - present
-    - value: 1
+ip route add 172.16.2.128/28 via 172.16.2.151 dev eth1:
+  cmd:
+    - run
 
-# Activer ipv6 forwarding
-net.ipv6.conf.all.forwarding:
-  sysctl:
-    - present
-    - value: 1
+ip route add 172.16.2.176/28 via 172.16.2.151 dev eth1:
+  cmd:
+    - run
+
+ip route add 172.16.2.160/28 via 172.16.2.151 dev eth1:
+  cmd:
+    - run

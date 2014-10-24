@@ -16,18 +16,13 @@ eth2:
     - ipaddr: 172.16.2.162
     - netmask: 255.255.255.240
 
-# Ne marche pas (encore) pour Debian avec salt stable
-# # route par défaut (global)
-# system:
-#     network.system:
-#       - enabled: True
-#       - gateway: None
-# => Commandes shell
-# Pas de passerelle par défaut
+ip route add 172.16.2.144/28 via 172.16.2.131:
+  cmd:
+    - run
 
-#ip route del default:
-#  cmd:
-#    - run
+ip route add 172.16.2.176/28 via 172.16.2.163:
+  cmd:
+    - run
 
 # active le relai ipv4 
 net.ipv4.ip_forward:

@@ -72,9 +72,9 @@ int main (int argc, char ** argv)
    }
 
    tun0fd = tun_alloc (argv [1]);
-   tun_read (tun0fd, 1);
+   /* itun_read (tun0fd, 1); */
 
-   while (1);
+   while (1) { tun_read (tun0fd, 1); }
 
    return EXIT_FAILURE;
 }

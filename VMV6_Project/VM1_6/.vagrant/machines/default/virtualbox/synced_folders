@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"owner":"etu","guestpath":"/vagrant","hostpath":"/home/nbl/dev/m1/s1/reseaux/NetworkProject/VMV6_Project/VM1_6","disabled":false},"/mnt/partage/labase":{"create":true,"owner":"etu","guestpath":"/mnt/partage/labase","hostpath":"/home/nbl/dev/m1/s1/reseaux/NetworkProject/VMV6_Project/partage","disabled":false}}}

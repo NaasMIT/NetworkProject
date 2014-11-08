@@ -5,11 +5,17 @@ ifdown eth1 eth2:
 # Configuration eth1
 # RAPPEL: eth0 est à vagrant, ne pas y toucher
 
+vim:
+  pkg:
+    - installed
+
+gdb:
+  pkg:
+    - installed
 
 inetutils-inetd:
   pkg:
     - installed
-
 
 update-inetd --add "echo stream tcp nowait nobody internal":
   cmd:
@@ -27,12 +33,6 @@ eth2:
       - 139.124.5.132
       - 139.124.5.131
 
-ip route change default via 172.16.2.186 dev eth2:
+ip route add 172.16.2.144/28 via 172.16.2.186 dev eth2:
   cmd:
     - run
-
-# active le relai ipv4 
-#net.ipv4.ip_forward:
-#  sysctl:
-#    - present
-#    - value: 1

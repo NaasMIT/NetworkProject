@@ -1,19 +1,17 @@
-CC      = gcc
-#CFLAGS  = -Wall 
-CFLAGS  = -Wextra -Werror -Wfatal-errors
+CC      = colorgcc
+CFLAGS  = -Wall -Wextra -Werror -Wfatal-errors
 CFLAGS += -pedantic -pedantic-errors
 CFLAGS += -std=gnu99
 CFLAGS += -g
-LDFLAGS = 
+LDFLAGS =
 SRC     = $(wildcard *.c)
 OBJ     = $(SRC:.c=.o)
-TARGET  = prog
-RM      = rm -rf
+BIN     = set_ip
 
-all: $(TARGET)
+all: $(BIN)
 
-$(TARGET): $(OBJ)
-	@echo 'Building' $(TARGET)
+$(BIN): $(OBJ)
+	@echo 'Building' $(BIN)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 	@echo 'Built successfully'
 
@@ -22,13 +20,13 @@ $(TARGET): $(OBJ)
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
 run:
-	@./$(TARGET)
+	@./$(BIN)
 
 dbg:
-	@gdb -tui $(TARGET)
+	@gdb $(BIN)
 
 mem:
-	@valgrind ./$(TARGET)
+	@valgrind ./$(BIN)
 
 clean:
-	@$(RM) $(OBJ) $(TARGET)
+	@rm -rf $(OBJ) $(BIN)

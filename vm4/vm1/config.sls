@@ -30,7 +30,7 @@ ip route add 172.16.2.176/28 via 172.16.2.132 dev eth2:
   cmd:
     - run
 
-# active le relai ipv4 
+# active le relai ipv4
 net.ipv4.ip_forward:
   sysctl:
     - present

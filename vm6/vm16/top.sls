@@ -1,3 +1,3 @@
 base:
   '*':
-    - config
+    - config_2

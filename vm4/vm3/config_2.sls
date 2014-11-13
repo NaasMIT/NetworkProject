@@ -1,6 +1,6 @@
-ifdown eth1 eth2:
-  cmd:
-    - run
+#ifdown eth1 eth2:
+#  cmd:
+#    - run
 
 # Configuration eth1
 # RAPPEL: eth0 est à vagrant, ne pas y toucher
@@ -34,5 +34,13 @@ eth2:
       - 139.124.5.131
 
 ip route add 172.16.2.144/28 via 172.16.2.186 dev eth2:
+  cmd:
+    - run
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
+ifup eth0 eth1 eth2:
   cmd:
     - run

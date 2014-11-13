@@ -24,3 +24,11 @@ eth1:
 ip route add 172.16.2.176/28 via 172.16.2.156 dev eth1:
   cmd:
     - run
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
+ifup eth0 eth1 eth2:
+  cmd:
+    - run

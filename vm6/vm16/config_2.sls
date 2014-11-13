@@ -1,6 +1,6 @@
-ifdown eth1 eth2:
-  cmd:
-    - run
+#ifdown eth1 eth2:
+#  cmd:
+#    - run
 
 # Configuration de l'interface eth1 VM1-6 LAN3
 eth1:
@@ -34,3 +34,11 @@ net.ipv4.ip_forward:
 # ip route add default dev eth1 proto kernel scope link src 172.16.1.1:
 #  cmd:
 #    - run
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
+ifup eth0 eth1 eth2:
+  cmd:
+    - run

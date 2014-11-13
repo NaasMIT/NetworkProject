@@ -37,4 +37,12 @@ eth2:
      - ipv6proto: static                       
      - ipv6addr: fc00:1234:1::16     
      - ipv6netmask: 64
-     - ipv6gateway: fc00:1234:1::26 
+     - ipv6gateway: fc00:1234:1::26
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
+ifup eth0 eth1 eth2:
+  cmd:
+    - run 

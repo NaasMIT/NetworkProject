@@ -35,3 +35,11 @@ net.ipv4.ip_forward:
   sysctl:
     - present
     - value: 1
+
+ifdown eth0 eth1 eth2:
+  cmd:
+    - run
+
+ifup eth0 eth1 eth2:
+  cmd:
+    - run

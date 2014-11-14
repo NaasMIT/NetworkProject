@@ -6,7 +6,7 @@ CFLAGS += -g
 LDFLAGS =
 SRC     = $(wildcard *.c)
 OBJ     = $(SRC:.c=.o)
-BIN     = serveur
+BIN     = client
 
 all: $(BIN)
 
@@ -15,7 +15,7 @@ $(BIN): $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 	@echo 'Built successfully'
 
-%.o: %.c %.h
+%.o: %.c
 	@echo 'Building $@ from $<'
 	@$(CC) -o $@ -c $< $(CFLAGS)
 

@@ -17,7 +17,7 @@
 
 int main (void) {
 
-	ext_in("fc00:1234:2::36","123");
+	ext_out();
 
 	return EXIT_SUCCESS;
 } // main()

@@ -1,4 +1,4 @@
-CC      = colorgcc
+CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror -Wfatal-errors
 CFLAGS += -pedantic -pedantic-errors
 CFLAGS += -std=gnu99
@@ -6,7 +6,7 @@ CFLAGS += -g
 LDFLAGS =
 SRC     = $(wildcard *.c)
 OBJ     = $(SRC:.c=.o)
-BIN     = set_ip
+BIN     = serveur
 
 all: $(BIN)
 
@@ -15,7 +15,7 @@ $(BIN): $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 	@echo 'Built successfully'
 
-%.o: %.c
+%.o: %.c %.h
 	@echo 'Building $@ from $<'
 	@$(CC) -o $@ -c $< $(CFLAGS)
 

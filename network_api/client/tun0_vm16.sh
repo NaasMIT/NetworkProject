@@ -1,15 +1,15 @@
 #!/bin/bash
 
 echo "###################################################
-# Script création tun0 lancement serveur          #
+# Script création tun0 lancement client           #
 # Version 1.0 // BELLIL | ADRAR | KHEMIRI         #
 ###################################################"
 
-if [[ -f serveur ]]
+if [[ -f client ]]
 then 
-   echo "[MIT_Script] Serveur déjà compilé !"
+   echo "[MIT_Script] Client déjà compilé !"
 else  
-   echo "[MIT_Script] Compilation du programme de création du tunnel tun0 coté serveur ..."
+   echo "[MIT_Script] Compilation du programme de création du tunnel tun0 coté client ..."
    make
    if [ $? -ne 0 ]; 
    then
@@ -22,9 +22,9 @@ fi
 
 echo "[MIT_Script] Lancement de tun0 et du client ..."
 
-./tun0bis_vm36.sh &
+./tun0bis_vm16.sh &
 
-./serveur
+./client
 if [ $? -ne 0 ]; 
    then
       echo "[MIT_Script] [Erreur]"

@@ -5,6 +5,26 @@ echo "###################################################
 # Version 1.0 // BELLIL | ADRAR | KHEMIRI         #
 ###################################################"
 
+echo "[MIT_Script] Redémarrage des paramètres réseaux"
+/etc/init.d/networking restart
+
+if [[ -f client ]]
+then 
+   echo "[MIT_Script] Client déjà compilé !"
+else  
+   echo "[MIT_Script] Compilation du programme de création du tunnel tun0 coté client ..."
+   make
+   if [ $? -ne 0 ]; 
+   then
+      echo "[MIT_Script] [Erreur]"
+      echo "[MIT_Script] Programme non compilé tun0 ne peut être créé" 
+      exit 0
+   fi
+   echo "[MIT_Script] [OK]"
+fi
+
+echo "[MIT_Script] Lancement de tun0 et du client ..."
+make run &
 sleep 10
 if [ $? -ne 0 ]; 
    then

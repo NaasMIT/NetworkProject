@@ -5,7 +5,7 @@ echo "###################################################
 # Version 1.0 // BELLIL | ADRAR | KHEMIRI         #
 ###################################################"
 
-if [[ -f serveur ]]
+if [[ -f client ]]
 then 
    echo "[MIT_Script] Serveur déjà compilé !"
 else  

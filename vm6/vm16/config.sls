@@ -9,8 +9,8 @@ eth1:
     - type: eth
     - proto: none
     - ipaddr: 172.16.2.156
+    - gateway: 172.16.2.151
     - netmask: 255.255.255.240
-
 
 ip route add 172.16.2.128/28 via 172.16.2.151 dev eth1:
   cmd:
@@ -38,6 +38,12 @@ eth2:
      - ipv6addr: fc00:1234:1::16     
      - ipv6netmask: 64
      - ipv6gateway: fc00:1234:1::26
+
+# active le relai ipv4
+net.ipv4.ip_forward:
+  sysctl:
+    - present
+    - value: 1
 
 ifdown eth0 eth1 eth2:
   cmd:

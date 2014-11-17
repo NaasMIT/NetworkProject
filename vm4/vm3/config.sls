@@ -19,9 +19,6 @@ eth1:
     - ipaddr: 172.16.2.163
     - gateway: 172.16.2.162
     - netmask: 255.255.255.240
-    - dns:
-      - 139.124.5.132
-      - 139.124.5.131
 
 eth2:
   network.managed:
@@ -31,15 +28,16 @@ eth2:
     - ipaddr: 172.16.2.183
     - gateway: 172.16.2.186
     - netmask: 255.255.255.240
-    - dns:
-      - 139.124.5.132
-      - 139.124.5.131
 
-ip route add 172.16.2.128/28 via 172.16.2.162:
+ip route add 172.16.2.128/28 via 172.16.2.162 dev eth1:
   cmd:
     - run
 
-ip route add 172.16.2.144/28 via 172.16.2.162:
+ip route add 172.16.2.144/28 via 172.16.2.162 dev eth1:
+  cmd:
+    - run
+
+ip route add 172.16.2.176/28 via 172.16.2.186 dev eth2:
   cmd:
     - run
 

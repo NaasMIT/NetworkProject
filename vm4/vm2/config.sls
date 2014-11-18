@@ -26,10 +26,6 @@ ip route add 172.16.2.160/28 via 172.16.2.163 dev eth2:
   cmd:
     - run
 
-ip route add 172.16.2.144/28 via 172.16.2.131 dev eth1:
-  cmd:
-    - run
-
 ip route add 172.16.2.176/28 via 172.16.2.163 dev eth2:
   cmd:
     - run
